@@ -6,6 +6,8 @@
 
 package helium314.keyboard.keyboard;
 
+import android.view.WindowInsets;
+
 import static helium314.keyboard.keyboard.KeyboardTheme.STYLE_ROUNDED;
 
 import android.content.Context;
@@ -150,7 +152,7 @@ public class KeyboardView extends View {
         mPaint.setAntiAlias(true);
         mTypeface = Settings.getInstance().getCustomTypeface();
         mEmojiTypeface = Settings.getInstance().getCustomEmojiTypeface();
-        setFitsSystemWindows(true);
+        setFitsSystemWindows(false);
     }
 
     @Nullable
@@ -643,5 +645,10 @@ public class KeyboardView extends View {
             mColors.setColor(icon, ColorType.KEY_TEXT);
         }
     }
-
+    @Override                                                                                                                                                  
+     public WindowInsets onApplyWindowInsets(WindowInsets insets) {                                                                                             
+         int navBars = insets.getInsets(WindowInsets.Type.navigationBars()).bottom;                                                                             
+         setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), navBars);                                                                             
+         return insets;                                                                                                                                         
+     }  
 }
