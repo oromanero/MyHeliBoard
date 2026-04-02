@@ -645,10 +645,4 @@ public class KeyboardView extends View {
             mColors.setColor(icon, ColorType.KEY_TEXT);
         }
     }
-    @Override                                                                                                                                                  
-     public WindowInsets onApplyWindowInsets(WindowInsets insets) {                                                                                             
-         int navBars = insets.getInsets(WindowInsets.Type.navigationBars()).bottom;                                                                             
-         setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), navBars);                                                                             
-         return insets;                                                                                                                                         
-     }  
 }
