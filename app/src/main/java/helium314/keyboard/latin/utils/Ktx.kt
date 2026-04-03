@@ -123,6 +123,13 @@ fun Context.getDisplayContext(): Context {
 /** Override layout parameters to expand SoftInputWindow to the entire screen, See setInputView and SoftInputWindow.updateWidthHeight */
 fun InputMethodService.updateSoftInputWindowLayoutParameters(inputView: View?) {
     val window = window.window ?: return
+
+    // Prevent system from drawing navigation stub over the keyboard                                                                                       
+    window.setFlags(
+         WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+         WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+    )
+
     ViewLayoutUtils.updateLayoutHeightOf(window, ViewGroup.LayoutParams.MATCH_PARENT)
 
     if (inputView == null) return
